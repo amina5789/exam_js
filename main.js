@@ -1,55 +1,36 @@
 // 1 задача
-function numm() {
-  let num = ["hello", "world"];
-  let num2 = num.map(
-    (a) =>
-      `${a.charAt(0).toUpperCase()}${a.charAt(1)}${a.charAt(2)}${a.charAt(
-        3
-      )}${a.charAt(4)}  `
-  );
-  console.log(num2);
+let arry = ["hello", "world"];
+function strings(arry) {
+ return  num2 = arry.map(
+    (str) => str.charAt(0).toUpperCase()+str.slice(1));
 }
-numm();
+console.log(strings(arry))
 // 2 задача
 // ------------------------------------------------
-function keyss() {
-  const obj = {
+const obj = {
     name: "John",
     age: 25,
     city: "New-yourk",
   };
-  let key = Object.keys(obj);
-  return key;
+function keyss(keyObject) {
+  return Object.keys(keyObject);
 }
-console.log(keyss());
+console.log(keyss(obj));
 // -----------------------------------------------------
 // 3 задача
-
 let nummber = [1, 2, 3];
 
-function asyncOperation(nummber) {
-  return new Promise((resolve, reject) => {
-      let square = nummber.map((a) => a ** 2);
-      console.log(square);
-    
-      if(nummber.forEach((a)=> {
-        if(isNaN(a)) {
-            console.log('ошибка')
-        }
-      })) 
-        setTimeout(() => {
-            if (square.includes('NaN')) {
-                console.log('lol');
-                
-            }
-            resolve(square);
-          }, 2000);
-    
-    
-   
-  });
-}
-
-asyncOperation(nummber)
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
+function asyncOperation(arr) {
+    return new Promise((resolve, reject) => {
+      if (arr.some((item) => typeof item !== 'number')) {
+        reject('Ошибка');
+      }
+      setTimeout(() => {
+        const squares = arr.map((num) => num ** 2);
+        resolve(squares);
+      }, 2000);
+    });
+  }
+  asyncOperation(nummber)
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
